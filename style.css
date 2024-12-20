@@ -8,8 +8,8 @@ body {
     background-color: black;
     color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; 
+    align-items: center; 
     height: 100vh;
 }
 
@@ -25,4 +25,13 @@ body {
     background-color: blue;
     border: 1px solid black;
     flex-shrink: 0;
+}
+
+#wrapper {
+    text-align: center;
+}
+
+#grid-draw-btn {
+    margin-top: 30px;
+    padding: 5px;
 }

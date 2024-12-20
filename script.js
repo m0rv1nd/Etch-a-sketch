@@ -1,38 +1,61 @@
-let gridSize = +prompt("Enter the grid size");
-let gridContainer = gridSize * gridSize;
 const container = document.querySelector("#container");
+const gridDrawBtn = document.querySelector("#grid-draw-btn");
 let ifClick = false;
+let grid;
 
+document.addEventListener('dragstart', e => e.preventDefault());
 
-for (i = 0; i <= gridContainer - 1; i++) {
-    const newDiv = document.createElement("div");
-    newDiv.classList.add("grid");
-    container.appendChild(newDiv);
-} 
+gridDrawBtn.addEventListener("click", drawGrid);
 
-const grid = document.querySelectorAll(".grid");
+function drawGrid () {
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+      }
+      
+    let gridSize = +prompt("Enter the grid size");
+    
+    while (gridSize > 256) {
+        gridSize = +prompt("Enter the grid size");
+      }
+    
+    let gridContainer = gridSize * gridSize;
 
-for (let div of grid) {
-    div.style.width = 960 / gridSize + "px";
-    div.style.height = 960 / gridSize + "px";
+    for (i = 0; i <= gridContainer - 1; i++) {
+        const newDiv = document.createElement("div");
+        newDiv.classList.add("grid");
+        container.appendChild(newDiv);
+    } 
+    
+    grid = document.querySelectorAll(".grid");
+    
+    for (let div of grid) {
+        div.style.width = 960 / gridSize + "px";
+        div.style.height = 960 / gridSize + "px";
+    }
+    draw();  
+}
+    
+function draw () {
+    for (let div of grid) {
 
-    div.addEventListener("mousedown", (event) => {
-        if (event.button === 0) {
-            ifClick = true;
-        }
-    });
-
-    div.addEventListener("mousemove", () => {
-        if (ifClick) {
-            div.style.backgroundColor = "yellow";
-        }
-    });
-
-    div.addEventListener("mouseup", () => {
-        ifClick = false;
-        }
-    );
+        div.addEventListener("mousedown", (event) => {
+            if (event.button === 0) {
+                ifClick = true;
+            }
+        });
+    
+        div.addEventListener("mousemove", () => {
+            if (ifClick) {
+                div.style.backgroundColor = "yellow";
+            }
+        });
+    
+        div.addEventListener("mouseup", () => {
+            ifClick = false;
+            }
+        );
+    }
 }
 
 
-
+ 
