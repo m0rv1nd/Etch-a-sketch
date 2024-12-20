@@ -12,10 +12,10 @@ function drawGrid () {
         container.removeChild(container.firstChild);
       }
       
-    let gridSize = +prompt("Enter the grid size");
+    let gridSize = +prompt("how many squares per side of a square grid? (max. 256)");
     
     while (gridSize > 256) {
-        gridSize = +prompt("Enter the grid size");
+        gridSize = +prompt("how many squares per side of a square grid? (max. 256)");
       }
     
     let gridContainer = gridSize * gridSize;
