@@ -41,6 +41,8 @@ function draw () {
         div.addEventListener("mousedown", (event) => {
             if (event.button === 0) {
                 ifClick = true;
+                const currentOpacity = parseFloat(div.style.opacity || 1);
+                div.style.opacity = currentOpacity - 0.1;
             }
         });
     
